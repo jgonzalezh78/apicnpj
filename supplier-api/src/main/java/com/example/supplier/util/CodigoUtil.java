@@ -1,6 +1,8 @@
 package com.example.supplier.util;
+import java.util.logging.Logger;
 
 public class CodigoUtil {
+    private static final Logger LOGGER = Logger.getLogger(CodigoUtil.class.getName());
 
     public static boolean isValidCNPJ(long cnpj) {
         String cnpjStr = String.format("%014d", cnpj);
@@ -36,6 +38,6 @@ public class CodigoUtil {
 
     public static void main(String[] args) {
         long cnpj = 12345678000195L; // Example CNPJ
-        System.out.println("CNPJ is valid: " + isValidCNPJ(cnpj));
+        LOGGER.info("CNPJ is valid: " + isValidCNPJ(cnpj));
     }
 }
