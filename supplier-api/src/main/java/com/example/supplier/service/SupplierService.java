@@ -12,10 +12,12 @@ import java.util.Optional;
 @Service
 public class SupplierService {
 
-    @Autowired
-    private SupplierRepository supplierRepository;
+    private final SupplierRepository supplierRepository;
+    public SupplierService(SupplierRepository supplierRepository) {
 
+        this.supplierRepository = supplierRepository;
     public Supplier createSupplier(Supplier supplier) {
+    }
         if (!CodigoUtil.isValidCNPJ(supplier.getCnpj())) {
             throw new IllegalArgumentException("Invalid CNPJ");
         }
@@ -45,7 +47,6 @@ public class SupplierService {
     }
 
     public boolean deleteSupplier(Long id) {
-        Supplier supplier = supplierRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Supplier not found with id " + id));
         supplierRepository.deleteById(id);
         return true;
