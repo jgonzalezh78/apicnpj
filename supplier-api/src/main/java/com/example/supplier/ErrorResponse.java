@@ -7,6 +7,7 @@ public class ErrorResponse {
 	public ErrorResponse(String code, String message) {
 		this.code = code;
 		this.message = message;
+		system.out.println("ErrorResponse created with code: " + code + " and message: " + message);
 	}
 
 	public String getCode() {
